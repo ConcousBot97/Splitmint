@@ -108,15 +108,18 @@ export function generateSettlements(balances: Balance[]): Settlement[] {
   const workingBalances = balances.map(b => ({ ...b }))
   
   while (true) {
-    // Find max creditor (person owed most)
-    const maxCreditor = workingBalances.reduce((max, curr) => 
-      curr.netBalance > max.netBalance ? curr : max
-    )
+   // Safety check for empty balances
+   if (workingBalances.length === 0) break
     
-    // Find max debtor (person who owes most)
-    const maxDebtor = workingBalances.reduce((max, curr) => 
-      curr.netBalance < max.netBalance ? curr : max
-    )
+   // Find max creditor (person owed most)
+   const maxCreditor = workingBalances.reduce((max, curr) => 
+     curr.netBalance > max.netBalance ? curr : max
+   , workingBalances[0])
+   
+   // Find max debtor (person who owes most)
+   const maxDebtor = workingBalances.reduce((max, curr) => 
+     curr.netBalance < max.netBalance ? curr : max
+   , workingBalances[0])
     
     // If all balanced, stop
     if (Math.abs(maxCreditor.netBalance) < 0.01 && Math.abs(maxDebtor.netBalance) < 0.01) {
