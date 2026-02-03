@@ -88,7 +88,7 @@ export default function ExpenseList({ expenses, participants, onUpdate }: Expens
                         </div>
                         {format(new Date(expense.date), 'MMM d, yyyy')}
                       </div>
-                      <div className="flex items-center gap-1.5">
+                      
                       <div className="flex items-center gap-1.5">
                         <div className="p-1 bg-accent-100 rounded-lg">
                           <User className="w-3.5 h-3.5 text-accent-600" />
