@@ -228,9 +228,11 @@ export default function GroupPage() {
           </div>
           
           {/* Expense Chart */}
-          <div className="card animate-slide-up" style={{ animationDelay: '150ms' }}>
-            <ExpenseChart expenses={expenses} />
-          </div>
+          {expenses.length > 0 && (
+            <div className="card animate-slide-up" style={{ animationDelay: '150ms' }}>
+              <ExpenseChart expenses={expenses} />
+            </div>
+          )}
         </div>
 
         {/* Expenses Section */}
