@@ -89,6 +89,7 @@ export default function GroupPage() {
         date: expense.date,
         payer_id: expense.payer_id,
         split_mode: expense.split_mode,
+        category: expense.category || 'other',
         splits: expense.expense_splits.map((split: any) => ({
           participant_id: split.participant_id,
           amount: Number(split.amount),
